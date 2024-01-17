@@ -20,5 +20,12 @@
 }
 
 body {
+  background-image: url(./assets/background_pc.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: 'GmarketSansBold', sans-serif;
+  height: 6813px;
+  margin: 0;
+  overflow: auto;
 }
