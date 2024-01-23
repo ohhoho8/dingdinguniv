@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
     display: none;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 665px) {
     align-items: center;
     .menuToggleBtn {
       display: block;
@@ -26,12 +26,12 @@ const StyledHeader = styled.header`
 const DingdingunivImage = styled.img`
   margin-left: 46px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 666px) {
     margin-left: 115px;
   }
 `;
 const Nav=styled.ul`
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 665px) {
     display: ${(props)=> (props.isToggleOpen ? "block" : "none")};
     width: 100%;
     position: fixed;
@@ -46,7 +46,7 @@ const MenuList = styled.div`
   justify-content: flex-end;
   
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 665px) {
     flex-direction: column;
     align-items: flex-end;
     margin-top: 70px;
