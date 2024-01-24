@@ -123,7 +123,7 @@ const AI = () => {
 
   return (
     <div id="ai">
-      <Title>{language === 'ko'? '누구나 원하는':'Automate Metadata,'}{isSmallScreen||language!=='ko' ? <br /> : ' '}{language === 'ko'? '영상을 찾는 세상':'Elevate Creation'}</Title>
+      <Title>{language === 'ko'? '누구나 원하는':'Automate Metadata,'}{isSmallScreen||language!=='ko' ? "\n" : ' '}{language === 'ko'? '영상을 찾는 세상':'Elevate Creation'}</Title>
       <SubTitle>{language==='ko'? '비전 AI 솔루션, 딩딩아이':'Vision AI solution, DingDing EYE'}</SubTitle>
       <Content>
         {language === 'ko' ? '귀찮고, 힘들고, 오래 걸리는 프리뷰, 손 쉽게 해결해 보세요\n' : 'No more preview, No more searching.\n'}
