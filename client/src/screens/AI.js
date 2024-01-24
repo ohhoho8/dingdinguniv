@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import { LanguageContext } from '../contexts/Language';
 import button_dingdingeye from "../assets/button_dingdingeye.svg"
 import logo_dingdingeye from "../assets/logo_dingdingeye.svg"
 import imageframe_metadata from "../assets/imageframe_metadata.svg"
@@ -113,13 +114,8 @@ const FrameText = styled.div`
 `
 
 const AI = () => {
-  const [language, setLanguage] = useState('ko');
+  const { language } = useContext(LanguageContext);
   const isSmallScreen = window.innerWidth <= 665;
-
-  useEffect(() => {
-    const userLanguage = navigator.language.toLocaleLowerCase();
-    setLanguage(userLanguage.includes('ko')? 'ko':'en');
-  }, [])
 
   return (
     <div id="ai">

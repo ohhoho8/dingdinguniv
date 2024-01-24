@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import { LanguageContext } from '../contexts/Language';
+import EmptyBox from '../components/EmptyBox';
 
 const Title = styled.div`
   font-family: 'GmarketSansBold', sans-serif;
@@ -63,13 +65,7 @@ const Location = styled.div`
 `
 
 const Company = () => {
-    const [language, setLanguage] = useState('ko');
-    //const isSmallScreen = window.innerWidth <= 665;
-
-    useEffect(() => {
-        const userLanguage = navigator.language.toLocaleLowerCase();
-        setLanguage(userLanguage.includes('ko')? 'ko':'en');
-      }, [])
+  const { language } = useContext(LanguageContext);
 
   return (
     <div id="company">
@@ -77,6 +73,7 @@ const Company = () => {
       <Content>{language==='ko'?'AI 기술을 활용한 메타데이터 자동생성 솔루션 &lt;딩딩아이&gt;,{"\n"}방송 아카이브를 활용한 치매 관리 콘텐츠, {isSmallScreen&&"\n"}지식 콘텐츠 등을 생산하고 있습니다.':'We produce content such as the AI-driven automatic metadata generation solution, DingDingEye,\nand dementia management content using broadcast archives, contributing to knowledge creation.'}</Content>
       <LocationInfo>찾아오시는 길</LocationInfo>
       <Location>서울시 마포구 성암로 267, MBC 신사옥 (상암동){"\n"}02--789-2559 / dingding.univ@gmail.com</Location>
+      <EmptyBox height={100} />
     </div>
   );
 };

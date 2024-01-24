@@ -1,10 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-scroll';
 import {FaBars} from 'react-icons/fa';
 import EmptyBox from '../components/EmptyBox';
 import logo_dindinguniv from '../assets/logo_dingdinguniv.svg'
+import { LanguageContext } from '../contexts/Language';
 
+const StyledButton = styled.button`
+  padding: 10px 20px;
+  font-family: 'GmarketSansMedium', sans-serif;
+  font-size: 14px;
+  color: #878787
+  cursor: pointer;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: auto;
+
+  &:focus {
+    outline: none;
+  }
+`
 const StyledHeader = styled.header`
   display: flex;
   align-items: flex-start;
@@ -64,7 +79,9 @@ const MenuLink = styled(Link)`
   color: inherit;
 `;
 
+
 const Header = () => {
+  const { language, toggleLanguage } = useContext(LanguageContext);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleToggleOpen = () => {
@@ -73,7 +90,7 @@ const Header = () => {
 
   return (
     <>
-      <EmptyBox height={80} />
+        <StyledButton onClick={toggleLanguage}>언어 변경 (현재 언어:{language})</StyledButton>
         <StyledHeader>
           <DingdingunivImage src={logo_dindinguniv} alt={logo_dindinguniv} />
           <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />

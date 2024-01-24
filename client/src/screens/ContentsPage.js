@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import { LanguageContext } from '../contexts/Language';
 import button_dingkok from "../assets/button_dingkok.svg"
 import button_dingdingbrain from "../assets/button_dingdingbrain.svg"
 import logo_dingkok from "../assets/logo_dingcok.svg"
@@ -115,13 +116,8 @@ const FrameText = styled.div`
 `
 
 const ContentsPage = () => {
-  const [language, setLanguage] = useState('ko');
+  const { language } = useContext(LanguageContext);
   const isSmallScreen = window.innerWidth <= 665;
-
-  useEffect(() => {
-    const userLanguage = navigator.language.toLocaleLowerCase();
-    setLanguage(userLanguage.includes('ko')? 'ko':'en');
-  }, [])
 
   return (
     <div id="contents">
