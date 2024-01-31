@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
-import styled from 'styled-components';
-import {Link} from 'react-scroll';
-import {FaBars} from 'react-icons/fa';
-import logo_dindinguniv from '../assets/logo_dingdinguniv.svg'
-import { LanguageContext } from '../contexts/Language';
-import EmptyBox from '../components/EmptyBox';
+import React, { useState, useContext } from "react";
+import styled from "styled-components";
+import { Link } from "react-scroll";
+import { FaBars } from "react-icons/fa";
+import logo_dindinguniv from "../assets/logo_dingdinguniv.svg";
+import { LanguageContext } from "../contexts/Language";
+import EmptyBox from "../components/EmptyBox";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
   position: relative;
   margin-left: 288px;
 
-  .menuToggleBtn{
+  .menuToggleBtn {
     display: none;
   }
 
@@ -25,16 +25,16 @@ const StyledHeader = styled.header`
       right: 40px;
     }
   }
-`
-const Nav=styled.ul`
+`;
+const Nav = styled.ul`
   @media screen and (max-width: 665px) {
-    display: ${(props)=> (props.isToggleOpen ? "block" : "none")};
+    display: ${(props) => (props.isToggleOpen ? "block" : "none")};
     width: 100%;
     position: fixed;
     top: 70px;
     right: 25px;
   }
-`
+`;
 const MenuList = styled.div`
   display: flex;
   align-items: flex-end;
@@ -48,11 +48,11 @@ const MenuList = styled.div`
     margin-top: 70px;
     margin-left: auto;
     margin-right: 25px;
-    gap:30px;
+    gap: 30px;
   }
-`
-const Menu=styled.div`
-  font-family: 'GmarketSansMedium', sans-serif;
+`;
+const Menu = styled.div`
+  font-family: "GmarketSansMedium", sans-serif;
   font-size: 14px;
   color: #878787;
   margin-right: 62px;
@@ -60,81 +60,103 @@ const Menu=styled.div`
   @media screen and (max-width: 665px) {
     margin-right: 0px;
   }
-`
+`;
 const MenuLink = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-`
-const Language=styled.div`
+`;
+const Language = styled.div`
   cursor: pointer;
-  font-family: 'GmarketSansMedium', sans-serif;
+  font-family: "GmarketSansMedium", sans-serif;
   font-size: 14px;
   color: #878787;
-`
-const LanguageBold=styled.div`
+
+  @media screen and (max-width: 665px) {
+    font-size: 12px;
+  }
+`;
+const LanguageBold = styled.div`
   cursor: pointer;
-  font-family: 'GmarketSansBold', sans-serif;
+  font-family: "GmarketSansBold", sans-serif;
   font-size: 14px;
   color: #878787;
-`
-const LanguageBox=styled.div`
+
+  @media screen and (max-width: 665px) {
+    font-size: 12px;
+  }
+`;
+const LanguageBox = styled.div`
   display: flex;
-  position: fixed;
+  position: absolute;
   right: 292px;
   gap: 15px;
 
   @media screen and (max-width: 666px) {
-    position: fixed;
-    right: 72px;
+    position: absolute;
+    right: 80px;
   }
-`
-;
-
-
+`;
 const Header = () => {
   const { language, toggleLanguage } = useContext(LanguageContext);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleToggleOpen = () => {
     setIsToggleOpen(!isToggleOpen);
-  }
+  };
 
   return (
-    <>  
-        <EmptyBox height={100} />
-        <StyledHeader>
-          <img src={logo_dindinguniv} alt={logo_dindinguniv} />
-          <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />
-          <Nav isToggleOpen={isToggleOpen} onClick={handleToggleOpen}>
-            <MenuList>
-              <Menu>
-                <MenuLink to="ai" smooth={true} duration={500}>AI Solution</MenuLink>
-              </Menu>
-              <Menu>
-                <MenuLink to="contents" smooth={true} duration={500}>Contents Product</MenuLink>
-              </Menu>
-              <Menu>
-                <MenuLink to="company" smooth={true} duration={500}>Company</MenuLink>
-              </Menu>
-            </MenuList>
-          </Nav>
-          {language === 'ko' ? (
-            <LanguageBox>
-              <LanguageBold>Kor</LanguageBold>
-              <Language>|</Language>
-              <Language onClick={toggleLanguage}>Eng</Language>
-            </LanguageBox>
-          ) : (
-            <LanguageBox>
-              <Language onClick={toggleLanguage}>Kor</Language>
-              <Language>|</Language>
-              <LanguageBold>Eng</LanguageBold>
-            </LanguageBox>
-          )}
-        </StyledHeader>
+    <>
+      <EmptyBox height={window.innerWidth <= 665 ? 25 : 20} />
+      <StyledHeader>
+        <img
+          src={logo_dindinguniv}
+          alt={logo_dindinguniv}
+          style={{ sidth: window.innerWidth <= 665 ? "103px" : "auto" }}
+        />
+        <FaBars
+          className="menuToggleBtn"
+          onClick={handleToggleOpen}
+          style={{
+            color: "#969595",
+            width: "37.33px",
+          }}
+        />
+        <Nav isToggleOpen={isToggleOpen} onClick={handleToggleOpen}>
+          <MenuList>
+            <Menu>
+              <MenuLink to="ai" smooth={true} duration={500}>
+                AI Solution
+              </MenuLink>
+            </Menu>
+            <Menu>
+              <MenuLink to="contents" smooth={true} duration={500}>
+                Contents Product
+              </MenuLink>
+            </Menu>
+            <Menu>
+              <MenuLink to="company" smooth={true} duration={500}>
+                Company
+              </MenuLink>
+            </Menu>
+          </MenuList>
+        </Nav>
+        {language === "ko" ? (
+          <LanguageBox>
+            <LanguageBold>Kor</LanguageBold>
+            <Language>|</Language>
+            <Language onClick={toggleLanguage}>Eng</Language>
+          </LanguageBox>
+        ) : (
+          <LanguageBox>
+            <Language onClick={toggleLanguage}>Kor</Language>
+            <Language>|</Language>
+            <LanguageBold>Eng</LanguageBold>
+          </LanguageBox>
+        )}
+      </StyledHeader>
     </>
   );
-}
+};
 
 export default Header;
