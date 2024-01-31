@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../contexts/Language";
-import button_dingkok from "../assets/button_dingkok.svg";
-import button_dingdingbrain from "../assets/button_dingdingbrain.svg";
 import logo_dingkok from "../assets/logo_dingcok.svg";
-import logo_dingdingbrain from "../assets/logo_dingdingbrain.svg";
 import EmptyBox from "../components/EmptyBox";
+import button_contact from "../assets/button_contact.svg";
+import ImageFrame from "../components/ImageFrame";
+import Slider from "../components/Slider";
+import slide_dingdingeye_1 from "../assets/slide_dingdingeye_1.svg";
+import slide_empty from "../assets/slide_empty.svg";
 
 const Title = styled.div`
   font-family: "GmarketSansBold", sans-serif;
@@ -13,7 +15,8 @@ const Title = styled.div`
   letter-spacing: -0.06em;
   color: #000000;
   margin-top: 31px;
-  margin-left: 164px;
+  margin-left: 598px;
+  margin-bottom: 87px;
   white-space: pre-line;
 
   @media screen and (max-width: 665px) {
@@ -27,8 +30,8 @@ const SubTitle = styled.div`
   font-size: 40px;
   letter-spacing: -0.06em;
   color: #000000;
-  margin-top: 448px;
-  margin-left: 175px;
+  margin-top: 585px;
+  margin-left: 609px;
 
   @media screen and (max-width: 665px) {
     font-size: 30px;
@@ -41,8 +44,7 @@ const Content = styled.div`
   font-size: 23px;
   letter-spacing: -0.02em;
   color: #000000;
-  margin-top: 159px;
-  margin-left: 175px;
+  margin-left: 609px;
   white-space: pre-line;
   margin-bottom: 13px;
 
@@ -52,9 +54,10 @@ const Content = styled.div`
     margin-left: 41px;
   }
 `;
-const DingdingeyeButton = styled.img`
-  margin-top: 135px;
-  margin-left: 175px;
+const DingcokLogo = styled.img`
+  display: block;
+  margin: 0 auto;
+  margin-top: 470px;
 
   @media screen and (max-width: 665px) {
     margin-top: 151px;
@@ -63,57 +66,57 @@ const DingdingeyeButton = styled.img`
     display: block;
   }
 `;
-const HorizontalContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 430px;
-  margin-left: 71px;
-  margin-right: 228px;
-
-  @media screen and (max-width: 665px) {
-    display: block;
-    flex-dirction: column;
-    align-items: flex-start;
-    margin-top: 327px;
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-`;
-const VerticalContainer = styled.div`
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 43px;
-
-  @media screen and (max-width: 665px) {
-    margint-left: 0px;
-  }
-`;
 const DingdingeyeContent = styled.div`
   font-family: "GmarketSansMedium", sans-serif;
-  font-size: 23px;
+  font-size: 16px;
   letter-spacing: -0.02em;
   color: #000000;
+  text-align: center;
   margin-bottom: 13px;
-  margin-right: 285px;
 
   @media screen and (max-width: 665px) {
     margin-left: 2px;
     margin-right: 2px;
   }
 `;
-const FrameText = styled.div`
-  font-family: "GmarketSansBold", sans-serif;
-  font-size: 30px;
-  margin-bottom: 21px;
-
-  @media screen and (max-width: 665px) {
-    margin-top: 66px;
-  }
+const ContactButton = styled.img`
+  display: block;
+  margin: 0 auto;
 `;
 
 const ContentsPage = () => {
   const { language } = useContext(LanguageContext);
   const isSmallScreen = window.innerWidth <= 665;
+
+  const contents = {
+    title: "영상별 메타데이터",
+    image_1: slide_dingdingeye_1,
+    content_1: "7,80년대 명작드라마가 교재로 변신",
+    image_2: slide_empty,
+    content_2: "월 2000시간까지 처리 가능",
+  };
+  const slides_contents = [
+    {
+      title: "드라마 인지 자극 프로그램",
+      image: slide_dingdingeye_1,
+      text: "7,80년대 명작드라마가 교재로 변신",
+    },
+    {
+      title: "\u00A0",
+      image: slide_empty,
+      text: "여의도 성모병원 뇌건강센터 감수",
+    },
+    {
+      title: "치매안심센터 프로그램",
+      image: slide_empty,
+      text: "과거 뉴스와 시사 교양 콘텐츠를 활용",
+    },
+    {
+      title: "\u00A0",
+      image: slide_empty,
+      text: "꼭 필요한 회상 요소만 뽑아 만든 12주 커리큘럼",
+    },
+  ];
 
   return (
     <div id="contents">
@@ -131,62 +134,48 @@ const ContentsPage = () => {
         {language === "ko"
           ? "더이상 머리 아픈 치매 치료 문제는 그만,\n"
           : "Say farewell to the headache of dementia treatment.\n"}
+      </Content>
+      <Content>
         {language === "ko"
           ? "60년 역사의 방대한 MBC 아카이브로 만든 영상으로 인지를 자극합니다."
           : "Stimulate cognition with videos crafted from the extensive 60-year history of the MBC Archive."}
+      </Content>
+      <Content>
         {language === "ko"
           ? ""
           : "DingDing Brain - Transforming memory care with the power of nostalgia"}
       </Content>
-      <DingdingeyeButton
-        src={language === "ko" ? button_dingkok : button_dingdingbrain}
-        alt={button_dingdingbrain}
-      />
-      <HorizontalContainer>
-        <VerticalContainer>
-          <img
-            src={language === "ko" ? logo_dingkok : logo_dingdingbrain}
-            alt="logo_dingding"
-          />
-          <EmptyBox height={isSmallScreen ? 80 : 68} />
-          <DingdingeyeContent>
-            {language === "ko"
-              ? "60년 역사의 아카이브를 활용한"
-              : "Journey through the Past,\nHeal for the Future\n"}
-          </DingdingeyeContent>
-          <DingdingeyeContent>
-            {language === "ko"
-              ? "회상 치료용 콘텐츠,\n\n"
-              : "Our revolutionary solution, DingDing Brain,\nharnesses the therapeutic power of vintage\ndramas for dementia treatment."}
-          </DingdingeyeContent>
-          <DingdingeyeContent>
-            {language === "ko"
-              ? "비전 AI 기술을 활용해 과거 영상을"
-              : "Embrace a new era of cognitive care with the\nnostalgic touch of timeless classics."}
-          </DingdingeyeContent>
-          <DingdingeyeContent>
-            {language === "ko" ? "분석하고, 전문가 감수를 거쳐" : ""}
-          </DingdingeyeContent>
-          <DingdingeyeContent>
-            {language === "ko" ? "효과적인 문제를 선보입니다." : ""}
-          </DingdingeyeContent>
-        </VerticalContainer>
-        <VerticalContainer>
-          <EmptyBox height={isSmallScreen ? 74 : 0} />
-          <FrameText>
-            {language === "ko"
-              ? "드라마 인지 자극 프로그램"
-              : "Drama-Stimulating\nCognitive Program"}
-          </FrameText>
-        </VerticalContainer>
-        <VerticalContainer>
-          <FrameText>
-            {language === "ko"
-              ? "치매안심센터 프로그램"
-              : "Cognitive Remediation:\nTherapeutic Learning Materials"}
-          </FrameText>
-        </VerticalContainer>
-      </HorizontalContainer>
+
+      <DingcokLogo src={logo_dingkok} alt="logo_dingcok" />
+      <EmptyBox height={isSmallScreen ? 80 : 47} />
+      <DingdingeyeContent>
+        {language === "ko"
+          ? "60년 역사의 아카이브를 활용한 화상 치료용 콘텐츠,"
+          : "Journey through the Past,\nHeal for the Future\n"}
+      </DingdingeyeContent>
+      <DingdingeyeContent>
+        {language === "ko"
+          ? " "
+          : "Our revolutionary solution, DingDing Brain,\nharnesses the therapeutic power of vintage\ndramas for dementia treatment."}
+      </DingdingeyeContent>
+      <DingdingeyeContent>
+        {language === "ko"
+          ? "비전 AI 기술을 활용해 과거 영상을 분석하고, 전문가 감수를 거쳐 효과적인 문제를 선보입니다."
+          : "Embrace a new era of cognitive care with the\nnostalgic touch of timeless classics."}
+      </DingdingeyeContent>
+      <DingdingeyeContent>{language === "ko" ? " " : ""}</DingdingeyeContent>
+      <DingdingeyeContent>{language === "ko" ? " " : ""}</DingdingeyeContent>
+      <EmptyBox height={isSmallScreen ? 74 : 47} />
+      <ContactButton src={button_contact} alt={button_contact} />
+
+      {window.innerWidth <= 665 ? (
+        <ImageFrame imageframe={contents} />
+      ) : (
+        <>
+          <EmptyBox height={308} />
+          <Slider slides={slides_contents} />
+        </>
+      )}
     </div>
   );
 };
