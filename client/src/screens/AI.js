@@ -7,6 +7,7 @@ import button_contact from "../assets/button_contact.svg";
 import button_contact_mobile from "../assets/button_contact_mobile.svg";
 import slide_dingdingeye_1 from "../assets/slide_dingdingeye_1.svg";
 import slide_dingdingeye_2 from "../assets/slide_dingdingeye_2.svg";
+import slide_empty from "../assets/slide_empty.svg";
 import EmptyBox from "../components/EmptyBox";
 import ImageFrame from "../components/ImageFrame";
 
@@ -85,6 +86,7 @@ const ContactButton = styled.img`
   display: block;
   margin: 0 auto;
   margin-top: 42px;
+  margin-bottom: 265.15px;
 `;
 const ContactButtonMobile = styled.img`
   display: block;
@@ -109,9 +111,19 @@ const AI = () => {
     {
       title: "영상별 메타데이터",
       image: slide_dingdingeye_1,
-      text: "첫번째 슬라이드",
+      text: "1시간 짜리 영상도 10분 만에!",
     },
-    { title: " ", image: slide_dingdingeye_2, text: "두번째 슬라이드" },
+    { title: "\u00A0", image: slide_dingdingeye_2, text: "\u00A0" },
+    {
+      title: "인물별, 대사별 영상 검색",
+      image: slide_empty,
+      text: "Ai 인물 인식을 통한 장면 검색",
+    },
+    {
+      title: "\u00A0",
+      image: slide_empty,
+      text: "대사와 자막까지 인식하는 생성형 Ai",
+    },
   ];
 
   return (
