@@ -3,17 +3,18 @@ import styled from "styled-components";
 import { LanguageContext } from "../contexts/Language";
 import EmptyBox from "../components/EmptyBox";
 import text_dingdinguniv from "../assets/text_dingdinguniv.svg";
+import text_dingdinguniv_eng from "../assets/text_dingdinguniv_eng.svg";
 import logo_dingdingeye from "../assets/logo_dingdingeye.svg";
 import logo_dingcok from "../assets/logo_dingcok.svg";
 
 const Title = styled.div`
   font-family: "GmarketSansBold", sans-serif;
-  font-size: 95px;
+  font-size: ${(props) => (props.language === "ko" ? 95 : 65)}px;
   letter-spacing: -0.06em;
   color: #000000;
-  margin-left: 475px;
+  margin-left: ${(props) => (props.language === "ko" ? 475 : 452)}px;
   white-space: pre-line;
-  line-height: 138.6%;
+  line-height: ${(props) => (props.language === "ko" ? 138.6 : 120.5)}%;
 
   @media screen and (max-width: 665px) {
     font-size: 45px;
@@ -31,7 +32,7 @@ const Content = styled.div`
   font-size: 23px;
   letter-spacing: -0.02em;
   color: #000000;
-  margin-left: 475px;
+  margin-left: ${(props) => (props.language === "ko" ? 475 : 452)}px;
   white-space: pre-line;
   margin-bottom: 13px;
 
@@ -46,7 +47,7 @@ const LocationInfo = styled.div`
   font-size: 40px;
   letter-spacing: -0.06em;
   color: #000000;
-  margin-top: 463px;
+  margin-top: ${(props) => (props.language === "ko" ? 463 : 427)}px;
   margin-left: 292px;
 
   @media screen and (max-width: 665px) {
@@ -120,36 +121,50 @@ const Company = () => {
           </HorizontalContainer>
         </>
       ) : (
-        ""
+        <>
+          <Title>MBC's in-house venture,</Title>
+          <img
+            src={text_dingdinguniv_eng}
+            alt={text_dingdinguniv_eng}
+            style={{ marginLeft: 452 }}
+          />
+          <Title>creates value through the utilization</Title>
+          <Title>of public broadcasting archives.</Title>
+          <EmptyBox height={105} />
+          <HorizontalContainer>
+            <Content>
+              We produce content such as the AI-driven automatic metadata
+              generation solution{"\u00A0"}
+            </Content>
+            <img
+              src={logo_dingdingeye}
+              alt={logo_dingdingeye}
+              style={{ width: 77, marginBottom: 20 }}
+            />
+          </HorizontalContainer>
+          <HorizontalContainer>
+            <Content>
+              and dementia management content using broadcast archives{"\u00A0"}
+            </Content>
+            <img
+              src={logo_dingcok}
+              alt={logo_dingcok}
+              style={{ width: 33, marginBottom: 20 }}
+            />
+          </HorizontalContainer>
+          <Content>contributing to knowledge creation.</Content>
+        </>
       )}
 
-      <LocationInfo>찾아오시는 길</LocationInfo>
+      <LocationInfo>
+        {language === "ko" ? "찾아오시는 길" : "Contact"}
+      </LocationInfo>
       <Location>
-        서울시 마포구 성암로 267, MBC 신사옥 (상암동){"\n"}02--789-2559 /
-        dingding.univ@gmail.com
+        {language === "ko"
+          ? "서울시 마포구 성암로 267, MBC 신사옥 (상암동)\n02--789-2559 / dingding.univ@gmail.com"
+          : "267, Seongam-ro, Mapo-gu, Seoul, MBC New Building (Sangam-dong)\n02-789-2559 / dingding.univ@gmail.com"}
       </Location>
       <EmptyBox height={100} />
-
-      <Title>
-        {language === "ko"
-          ? "MBC 사내벤처 딩딩대학은"
-          : "MBC's in-house venture,\nDingDing University,\ncreates value through the utilization\nof public broadcasting archives."}
-      </Title>
-      <Title>
-        {language === "ko"
-          ? "공영방송의 아카이브를 활용해"
-          : "MBC's in-house venture,\nDingDing University,\ncreates value through the utilization\nof public broadcasting archives."}
-      </Title>
-      <Title>
-        {language === "ko"
-          ? "부가가치를 만들어 냅니다."
-          : "MBC's in-house venture,\nDingDing University,\ncreates value through the utilization\nof public broadcasting archives."}
-      </Title>
-      <Content>
-        {language === "ko"
-          ? 'AI 기술을 활용한 메타데이터 자동생성 솔루션 &lt;딩딩아이&gt;,{"\n"}방송 아카이브를 활용한 치매 관리 콘텐츠, {isSmallScreen&&"\n"}지식 콘텐츠 등을 생산하고 있습니다.'
-          : "We produce content such as the AI-driven automatic metadata generation solution, DingDingEye,\nand dementia management content using broadcast archives, contributing to knowledge creation."}
-      </Content>
     </div>
   );
 };

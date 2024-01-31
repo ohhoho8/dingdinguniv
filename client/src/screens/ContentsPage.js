@@ -4,6 +4,7 @@ import { LanguageContext } from "../contexts/Language";
 import logo_dingkok from "../assets/logo_dingcok.svg";
 import EmptyBox from "../components/EmptyBox";
 import button_contact from "../assets/button_contact.svg";
+import button_contact_eng from "../assets/button_contact_eng.svg";
 import ImageFrame from "../components/ImageFrame";
 import Slider from "../components/Slider";
 import slide_dingdingeye_1 from "../assets/slide_dingdingeye_1.svg";
@@ -14,9 +15,9 @@ const Title = styled.div`
   font-size: 95px;
   letter-spacing: -0.06em;
   color: #000000;
-  margin-top: 31px;
+  margin-top: 25px;
   margin-left: 598px;
-  margin-bottom: 87px;
+  margin-bottom: ${(props) => (props.language === "ko" ? 73 : 32)}px;
   white-space: pre-line;
 
   @media screen and (max-width: 665px) {
@@ -30,7 +31,7 @@ const SubTitle = styled.div`
   font-size: 40px;
   letter-spacing: -0.06em;
   color: #000000;
-  margin-top: 585px;
+  margin-top: ${(props) => (props.language === "ko" ? 585 : 535)}px;
   margin-left: 609px;
 
   @media screen and (max-width: 665px) {
@@ -57,7 +58,7 @@ const Content = styled.div`
 const DingcokLogo = styled.img`
   display: block;
   margin: 0 auto;
-  margin-top: 470px;
+  margin-top: ${(props) => (props.language === "ko" ? 470 : 394)}px;
 
   @media screen and (max-width: 665px) {
     margin-top: 151px;
@@ -88,7 +89,7 @@ const ContentsPage = () => {
   const { language } = useContext(LanguageContext);
   const isSmallScreen = window.innerWidth <= 665;
 
-  const contents = {
+  const imageframe_contents = {
     title: "영상별 메타데이터",
     image_1: slide_dingdingeye_1,
     content_1: "7,80년대 명작드라마가 교재로 변신",
@@ -97,24 +98,42 @@ const ContentsPage = () => {
   };
   const slides_contents = [
     {
-      title: "드라마 인지 자극 프로그램",
-      image: slide_dingdingeye_1,
-      text: "7,80년대 명작드라마가 교재로 변신",
+      title:
+        language === "ko"
+          ? "드라마 인지 자극 프로그램"
+          : "Drama-Stimulating Cognitive Program",
+      image: slide_empty,
+      text:
+        language === "ko"
+          ? "7,80년대 명작드라마가 교재로 변신"
+          : "Transforming Classic 70s and 80s Dramas into Educational Materials",
     },
     {
       title: "\u00A0",
       image: slide_empty,
-      text: "여의도 성모병원 뇌건강센터 감수",
+      text:
+        language === "ko"
+          ? "여의도 성모병원 뇌건강센터 감수"
+          : "Supervised by the Brain Health Center at Yeouido St. Mary's Hospital",
     },
     {
-      title: "치매안심센터 프로그램",
+      title:
+        language === "ko"
+          ? "치매안심센터 프로그램"
+          : "Cognitive Remediation: Therapeutic Learning Materials",
       image: slide_empty,
-      text: "과거 뉴스와 시사 교양 콘텐츠를 활용",
+      text:
+        language === "ko"
+          ? "과거 뉴스와 시사 교양 콘텐츠를 활용"
+          : "Unlocking the Past: Utilizing Historical News and Cultural Content",
     },
     {
       title: "\u00A0",
       image: slide_empty,
-      text: "꼭 필요한 회상 요소만 뽑아 만든 12주 커리큘럼",
+      text:
+        language === "ko"
+          ? "꼭 필요한 회상 요소만 뽑아 만든 12주 커리큘럼"
+          : "Essential Nostalgia: Crafted 12-Week Curriculum",
     },
   ];
 
@@ -128,7 +147,7 @@ const ContentsPage = () => {
       <Title>
         {language === "ko"
           ? "아카이브 회상 솔루션, 딩콕"
-          : "Reminiscence Solution,\nDingDing Brain"}
+          : "Reminiscence Solution\nDing-Cog"}
       </Title>
       <Content>
         {language === "ko"
@@ -151,25 +170,27 @@ const ContentsPage = () => {
       <DingdingeyeContent>
         {language === "ko"
           ? "60년 역사의 아카이브를 활용한 화상 치료용 콘텐츠,"
-          : "Journey through the Past,\nHeal for the Future\n"}
+          : "Journey through the Past, Heal for the Future"}
       </DingdingeyeContent>
       <DingdingeyeContent>
         {language === "ko"
           ? " "
-          : "Our revolutionary solution, DingDing Brain,\nharnesses the therapeutic power of vintage\ndramas for dementia treatment."}
+          : "Our revolutionary solution, DingDing Brain, harnesses the therapeutic power of vintage dramas for dementia treatment."}
       </DingdingeyeContent>
       <DingdingeyeContent>
         {language === "ko"
           ? "비전 AI 기술을 활용해 과거 영상을 분석하고, 전문가 감수를 거쳐 효과적인 문제를 선보입니다."
-          : "Embrace a new era of cognitive care with the\nnostalgic touch of timeless classics."}
+          : "Embrace a new era of cognitive care with the nostalgic touch of timeless classics."}
       </DingdingeyeContent>
-      <DingdingeyeContent>{language === "ko" ? " " : ""}</DingdingeyeContent>
-      <DingdingeyeContent>{language === "ko" ? " " : ""}</DingdingeyeContent>
-      <EmptyBox height={isSmallScreen ? 74 : 47} />
-      <ContactButton src={button_contact} alt={button_contact} />
+      <EmptyBox height={isSmallScreen ? 74 : 38} />
+      {language === "ko" && !isSmallScreen && <EmptyBox height={9} />}
+      <ContactButton
+        src={language === "ko" ? button_contact : button_contact_eng}
+        alt={button_contact}
+      />
 
       {window.innerWidth <= 665 ? (
-        <ImageFrame imageframe={contents} />
+        <ImageFrame imageframe={imageframe_contents} />
       ) : (
         <>
           <EmptyBox height={308} />

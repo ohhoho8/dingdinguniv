@@ -4,6 +4,7 @@ import { LanguageContext } from "../contexts/Language";
 import Slider from "../components/Slider";
 import logo_dingdingeye from "../assets/logo_dingdingeye.svg";
 import button_contact from "../assets/button_contact.svg";
+import button_contact_eng from "../assets/button_contact_eng.svg";
 import button_contact_mobile from "../assets/button_contact_mobile.svg";
 import slide_dingdingeye_1 from "../assets/slide_dingdingeye_1.svg";
 import slide_dingdingeye_2 from "../assets/slide_dingdingeye_2.svg";
@@ -60,7 +61,7 @@ const Content = styled.div`
 const DingdingeyeLogo = styled.img`
   display: block;
   margin: 0 auto;
-  margin-top: 581px;
+  margin-top: 525px;
   margin-bottom: 47px;
 
   @media screen and (max-width: 665px) {
@@ -100,36 +101,62 @@ const AI = () => {
   const { language } = useContext(LanguageContext);
   const isSmallScreen = window.innerWidth <= 665;
 
-  const metadata = {
-    title: "영상별 메타데이터",
+  const imageframe_metadata = {
+    title:
+      language === "ko"
+        ? "영상별 메타데이터"
+        : "Metadata Tailored for Every Video",
     image_1: slide_dingdingeye_1,
-    content_1: "1시간 짜리 영상도 10분 만에!",
+    content_1:
+      language === "ko"
+        ? "1시간 짜리 영상도 10분 만에!"
+        : "Transfrom 1-hour videos in just 10 minutes!",
     image_2: slide_dingdingeye_2,
     content_2: "월 2000시간까지 처리 가능",
   };
   const slides_dingdingeye = [
     {
-      title: "영상별 메타데이터",
+      title:
+        language === "ko"
+          ? "영상별 메타데이터"
+          : "Metadata Tailored for Every Video",
       image: slide_dingdingeye_1,
-      text: "1시간 짜리 영상도 10분 만에!",
+      text:
+        language === "ko"
+          ? "1시간 짜리 영상도 10분 만에!"
+          : "Transfrom 1-hour videos in just 10 minutes!",
     },
-    { title: "\u00A0", image: slide_dingdingeye_2, text: "\u00A0" },
     {
-      title: "인물별, 대사별 영상 검색",
+      title: "\u00A0",
+      image: slide_dingdingeye_2,
+      text:
+        language === "ko" ? "\u00A0" : "Process up to 2000 hours per month!",
+    },
+    {
+      title:
+        language === "ko"
+          ? "인물별, 대사별 영상 검색"
+          : "Search Videos by Person and Dialogue",
       image: slide_empty,
-      text: "Ai 인물 인식을 통한 장면 검색",
+      text:
+        language === "ko"
+          ? "Ai 인물 인식을 통한 장면 검색"
+          : "Scene Search Through Ai Face Recognition",
     },
     {
       title: "\u00A0",
       image: slide_empty,
-      text: "대사와 자막까지 인식하는 생성형 Ai",
+      text:
+        language === "ko"
+          ? "대사와 자막까지 인식하는 생성형 Ai"
+          : "Generate Ai with Dialogue and Subtitles",
     },
   ];
 
   return (
     <div id="ai">
       <EmptyBox height={isSmallScreen ? 233 : 426.43} />
-      {isSmallScreen ? (
+      {isSmallScreen || language === "en" ? (
         <>
           <Title>
             {language === "ko" ? "누구나 원하는" : "Automate Metadata,"}
@@ -139,11 +166,7 @@ const AI = () => {
           </Title>
         </>
       ) : (
-        <Title>
-          {language === "ko"
-            ? "누구나 원하는 영상을 찾는 세상"
-            : "Automate Metadata, Elevate Creation"}
-        </Title>
+        <Title>{language === "ko" && "누구나 원하는 영상을 찾는 세상"}</Title>
       )}
       <SubTitle>
         {language === "ko"
@@ -178,11 +201,14 @@ const AI = () => {
           alt={button_contact_mobile}
         />
       ) : (
-        <ContactButton src={button_contact} alt={button_contact} />
+        <ContactButton
+          src={language === "ko" ? button_contact : button_contact_eng}
+          alt={button_contact}
+        />
       )}
 
       {window.innerWidth <= 665 ? (
-        <ImageFrame imageframe={metadata} />
+        <ImageFrame imageframe={imageframe_metadata} />
       ) : (
         <Slider slides={slides_dingdingeye} />
       )}
