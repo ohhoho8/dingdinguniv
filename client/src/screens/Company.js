@@ -6,6 +6,8 @@ import text_dingdinguniv from "../assets/text_dingdinguniv.svg";
 import text_dingdinguniv_eng from "../assets/text_dingdinguniv_eng.svg";
 import logo_dingdingeye from "../assets/logo_dingdingeye.svg";
 import logo_dingcok from "../assets/logo_dingcok.svg";
+import logo_dingdingeye_small from "../assets/logo_dingdingeye_small.svg";
+import logo_dingcok_small from "../assets/logo_dingcok_small.svg";
 
 const Title = styled.div`
   font-family: "GmarketSansBold", sans-serif;
@@ -17,15 +19,20 @@ const Title = styled.div`
   line-height: ${(props) => (props.language === "ko" ? 138.6 : 120.5)}%;
 
   @media screen and (max-width: 665px) {
-    font-size: 45px;
-    margin-top: 263.36px;
-    margin-left: 49px;
+    font-size: 30px;
+    margin-left: 25px;
   }
 `;
 const HorizontalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+`;
+const DingDingimg = styled.img`
+  @media screen and (max-width: 665px) {
+    width: 111px;
+    margin-top: 10px;
+  }
 `;
 const Content = styled.div`
   font-family: "GmarketSansMedium", sans-serif;
@@ -37,9 +44,9 @@ const Content = styled.div`
   margin-bottom: 13px;
 
   @media screen and (max-width: 665px) {
-    font-size: 20px;
+    font-size: 12px;
     margin-top: 80px;
-    margin-left: 49px;
+    margin-left: 25px;
   }
 `;
 const LocationInfo = styled.div`
@@ -85,7 +92,7 @@ const Company = () => {
               <Title>MBC 사내벤처{"\u00A0"}</Title>
             </div>
             <div>
-              <img
+              <DingDingimg
                 src={text_dingdinguniv}
                 alt={text_dingdinguniv}
                 style={{ marginBottom: 10 }}
@@ -108,17 +115,27 @@ const Company = () => {
               style={{ width: 77, marginBottom: 20 }}
             />
           </HorizontalContainer>
-          <HorizontalContainer>
-            <Content>방송 아카이브를 활용한 치매 관리 콘텐츠{"\u00A0"}</Content>
-            <img
-              src={logo_dingcok}
-              alt={logo_dingcok}
-              style={{ width: 33, marginBottom: 20 }}
-            />
-            <Content style={{ marginLeft: 0 }}>
-              , 지식 콘텐츠 등을 생산하고 있습니다.
-            </Content>
-          </HorizontalContainer>
+          {window.innerWidth <= 665 ? (
+            <div>
+              <HorizontalContainer>
+                <Content>
+                  방송 아카이브를 활용한 치매 관리 콘텐츠{"\u00A0"}
+                </Content>
+                <img src={logo_dingcok_small} alt={logo_dingcok} />
+              </HorizontalContainer>
+              <Content>지식 콘텐츠 등을 생산하고 있습니다.</Content>
+            </div>
+          ) : (
+            <HorizontalContainer>
+              <Content>
+                방송 아카이브를 활용한 치매 관리 콘텐츠{"\u00A0"}
+              </Content>
+              <img src={logo_dingcok_small} alt={logo_dingcok} />
+              <Content style={{ marginLeft: 0 }}>
+                , 지식 콘텐츠 등을 생산하고 있습니다.
+              </Content>
+            </HorizontalContainer>
+          )}
         </>
       ) : (
         <>
@@ -137,7 +154,11 @@ const Company = () => {
               generation solution{"\u00A0"}
             </Content>
             <img
-              src={logo_dingdingeye}
+              src={
+                window.innerWidth <= 665
+                  ? logo_dingdingeye_small
+                  : logo_dingdingeye
+              }
               alt={logo_dingdingeye}
               style={{ width: 77, marginBottom: 20 }}
             />
@@ -147,7 +168,7 @@ const Company = () => {
               and dementia management content using broadcast archives{"\u00A0"}
             </Content>
             <img
-              src={logo_dingcok}
+              src={window.innerWidth <= 665 ? logo_dingcok_small : logo_dingcok}
               alt={logo_dingcok}
               style={{ width: 33, marginBottom: 20 }}
             />
