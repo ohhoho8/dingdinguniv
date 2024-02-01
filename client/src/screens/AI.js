@@ -114,6 +114,22 @@ const AI = () => {
     image_2: slide_dingdingeye_2,
     content_2: "월 2000시간까지 처리 가능",
   };
+  const imageframe_search = {
+    title:
+      language === "ko"
+        ? "인물별, 대사별 영상 검색"
+        : "Search Videos by Person and Dialogue",
+    image_1: slide_empty,
+    content_1:
+      language === "ko"
+        ? "Ai 인물 인식을 통한 장면 검색"
+        : "Scene Search Through Ai Face Recognition",
+    image_2: slide_empty,
+    content_2:
+      language === "ko"
+        ? "대사와 자막까지 인식하는 생성형 Ai"
+        : "Generate Ai with Dialogue and Subtitles",
+  };
   const slides_dingdingeye = [
     {
       title:
@@ -197,7 +213,7 @@ const AI = () => {
       </DingdingeyeContent>
       {isSmallScreen ? (
         <ContactButtonMobile
-          src={button_contact_mobile}
+          src={language === "ko" ? button_contact_mobile : button_contact_eng}
           alt={button_contact_mobile}
         />
       ) : (
@@ -207,8 +223,12 @@ const AI = () => {
         />
       )}
 
-      {window.innerWidth <= 665 ? (
-        <ImageFrame imageframe={imageframe_metadata} />
+      {isSmallScreen ? (
+        <>
+          {" "}
+          <ImageFrame imageframe={imageframe_metadata} />{" "}
+          <ImageFrame imageframe={imageframe_search} />
+        </>
       ) : (
         <Slider slides={slides_dingdingeye} />
       )}

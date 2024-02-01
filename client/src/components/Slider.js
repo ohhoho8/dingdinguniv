@@ -9,7 +9,7 @@ import button_next from "../assets/button_next.svg";
 
 const SliderContainer = styled.div`
   overflow: hidden;
-  width: 100vw;
+  width: 1240.63px;
   margin-left: 290px;
 `;
 

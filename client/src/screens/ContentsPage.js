@@ -21,9 +21,10 @@ const Title = styled.div`
   white-space: pre-line;
 
   @media screen and (max-width: 665px) {
-    font-size: 65px;
-    margin-top: 221px;
-    margin-left: 41px;
+    font-size: 40px;
+    margin-top: 23px;
+    margin-left: 25px;
+    margin-bottom: 14px;
   }
 `;
 const SubTitle = styled.div`
@@ -35,9 +36,9 @@ const SubTitle = styled.div`
   margin-left: 609px;
 
   @media screen and (max-width: 665px) {
-    font-size: 30px;
-    margin-top: 13px;
-    margin-left: 43px;
+    font-size: 20px;
+    margin-top: 229px;
+    margin-left: 28px;
   }
 `;
 const Content = styled.div`
@@ -50,9 +51,8 @@ const Content = styled.div`
   margin-bottom: 13px;
 
   @media screen and (max-width: 665px) {
-    font-size: 20px;
-    margin-top: 87px;
-    margin-left: 41px;
+    font-size: 12px;
+    margin-left: 28px;
   }
 `;
 const DingcokLogo = styled.img`
@@ -65,6 +65,7 @@ const DingcokLogo = styled.img`
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 104px;
   }
 `;
 const DingdingeyeContent = styled.div`
@@ -76,6 +77,7 @@ const DingdingeyeContent = styled.div`
   margin-bottom: 13px;
 
   @media screen and (max-width: 665px) {
+    font-size: 12px;
     margin-left: 2px;
     margin-right: 2px;
   }
@@ -90,11 +92,36 @@ const ContentsPage = () => {
   const isSmallScreen = window.innerWidth <= 665;
 
   const imageframe_contents = {
-    title: "영상별 메타데이터",
-    image_1: slide_dingdingeye_1,
-    content_1: "7,80년대 명작드라마가 교재로 변신",
+    title:
+      language === "ko"
+        ? "드라마 인지 자극 프로그램"
+        : "Drama-Stimulating Cognitive Program",
+    image_1: slide_empty,
+    content_1:
+      language === "ko"
+        ? "7,80년대 명작드라마가 교재로 변신"
+        : "Transforming Classic 70s and 80s Dramas into Educational Materials",
     image_2: slide_empty,
-    content_2: "월 2000시간까지 처리 가능",
+    content_2:
+      language === "ko"
+        ? "여의도 성모병원 뇌건강센터 감수"
+        : "Supervised by the Brain Health Center at Yeouido St. Mary's Hospital",
+  };
+  const imageframe_care = {
+    title:
+      language === "ko"
+        ? "치매안심센터 프로그램"
+        : "Cognitive Remediation: Therapeutic Learning Materials",
+    image_1: slide_empty,
+    content_1:
+      language === "ko"
+        ? "과거 뉴스와 시사 교양 콘텐츠를 활용"
+        : "Unlocking the Past: Utilizing Historical News and Cultural Content",
+    image_2: slide_empty,
+    content_2:
+      language === "ko"
+        ? "꼭 필요한 회상 요소만 뽑아 만든 12주 커리큘럼"
+        : "Essential Nostalgia: Crafted 12-Week Curriculum",
   };
   const slides_contents = [
     {
@@ -146,7 +173,7 @@ const ContentsPage = () => {
       </SubTitle>
       <Title>
         {language === "ko"
-          ? "아카이브 회상 솔루션, 딩콕"
+          ? "아카이브 회상 솔루션,\n딩콕"
           : "Reminiscence Solution\nDing-Cog"}
       </Title>
       <Content>
@@ -179,8 +206,13 @@ const ContentsPage = () => {
       </DingdingeyeContent>
       <DingdingeyeContent>
         {language === "ko"
-          ? "비전 AI 기술을 활용해 과거 영상을 분석하고, 전문가 감수를 거쳐 효과적인 문제를 선보입니다."
-          : "Embrace a new era of cognitive care with the nostalgic touch of timeless classics."}
+          ? "비전 AI 기술을 활용해 과거 영상을 분석하고,"
+          : "Embrace a new era of cognitive care"}
+      </DingdingeyeContent>
+      <DingdingeyeContent>
+        {language === "ko"
+          ? "전문가 감수를 거쳐 효과적인 문제를 선보입니다."
+          : "with the nostalgic touch of timeless classics."}
       </DingdingeyeContent>
       <EmptyBox height={isSmallScreen ? 74 : 38} />
       {language === "ko" && !isSmallScreen && <EmptyBox height={9} />}
@@ -189,8 +221,13 @@ const ContentsPage = () => {
         alt={button_contact}
       />
 
-      {window.innerWidth <= 665 ? (
-        <ImageFrame imageframe={imageframe_contents} />
+      {isSmallScreen ? (
+        <>
+          <EmptyBox height={79} />
+          <ImageFrame imageframe={imageframe_contents} />
+          <EmptyBox height={47} />
+          <ImageFrame imageframe={imageframe_care} />
+        </>
       ) : (
         <>
           <EmptyBox height={308} />
