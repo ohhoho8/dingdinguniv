@@ -199,7 +199,6 @@ const AI = () => {
           ? "생성형 AI 기술을 활용한 비전 AI가 당신의 조연출이 되어 드립니다."
           : "Let DingDingEYE be your video genie-instant, hassle-free discovery."}
       </Content>
-
       <DingdingeyeLogo src={logo_dingdingeye} alt="logo_dingdingeye" />
       <DingdingeyeContent>
         {language === "ko"
@@ -222,8 +221,7 @@ const AI = () => {
           alt={button_contact}
         />
       )}
-
-      {isSmallScreen ? (
+      {window.innerWidth <= 665 ? (
         <>
           {" "}
           <ImageFrame imageframe={imageframe_metadata} />{" "}

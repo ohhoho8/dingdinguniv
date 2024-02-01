@@ -221,7 +221,7 @@ const ContentsPage = () => {
         alt={button_contact}
       />
 
-      {isSmallScreen ? (
+      {window.innerWidth <= 665 ? (
         <>
           <EmptyBox height={79} />
           <ImageFrame imageframe={imageframe_contents} />
